@@ -1,4 +1,29 @@
-FTP  exp 9
+Step-by-Step Guide:
+1. Install MRTG:
+- On Linux: Install using package managers, for example:
+```
+sudo apt install mrtg
+```
+
+2. Configure MRTG:
+
+- MRTG uses SNMP to gather data from routers, switches, and other devices. First, configure SNMP
+on your devices.
+- Generate the MRTG configuration using:
+```
+cfgmaker public@192.168.1.1 &gt; /etc/mrtg.cfg
+```
+Replace `192.168.1.1` with the IP address of your device.
+
+3. Monitor Traffic:
+- MRTG creates graphs of network traffic, helping to visualize data. Open the `mrtg.cfg` file in a
+browser to view the graphs:
+```
+indexmaker /etc/mrtg.cfg &gt; /var/www/html/mrtg/index.html
+```
+
+By usingNmap for active scanning and MRTG for monitoring traffic, you can effectively discover and
+map the devices and services in your networkFTP  exp 9
 Install: sudo apt install vsftpd
 sudo systemctl enable vsftpd
 sudo systemctl start vsftpd
