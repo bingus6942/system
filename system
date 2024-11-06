@@ -445,6 +445,225 @@ a. Open Filezilla
     Password -> Password Created
     Quick Connect -> Check Output
 
-exp 10???
+exp 10
+
+Here are some other commonly used CLI commands similar to `whoami` and `who`, which provide information about the current user, system, and environment. These commands work across various operating systems, primarily Linux, macOS, and Windows.
+
+### 1. **id**
+   - **Purpose:** Displays user and group IDs for the current user or a specified user.
+   - **Usage:** 
+     ```bash
+     id
+     ```
+   - **Output Example:** Shows user ID (UID), group ID (GID), and group memberships.
+     ```
+     uid=1001(johndoe) gid=1001(johndoe) groups=1001(johndoe),27(sudo)
+     ```
+
+### 2. **whoami**
+   - **Purpose:** Displays the username of the current logged-in user.
+   - **Usage:**
+     ```bash
+     whoami
+     ```
+   - **Output Example:** `johndoe`
+
+### 3. **hostname**
+   - **Purpose:** Shows the system's hostname.
+   - **Usage:** 
+     ```bash
+     hostname
+     ```
+   - **Output Example:** Returns the name of the computer, e.g., `my-computer`.
+
+### 4. **uptime**
+   - **Purpose:** Displays how long the system has been running, along with the load averages.
+   - **Usage:**
+     ```bash
+     uptime
+     ```
+   - **Output Example:** Shows uptime, number of users, and load averages.
+     ```
+     10:12:45 up 5 days, 3:40,  2 users,  load average: 0.03, 0.05, 0.01
+     ```
+
+### 5. **last**
+   - **Purpose:** Lists the most recent logins for the system.
+   - **Usage:** 
+     ```bash
+     last
+     ```
+   - **Output Example:** Shows usernames, terminal, IP address, login date, and time.
+     ```
+     johndoe  pts/0        192.168.1.101   Tue Nov  5 09:05 - 10:10  (01:05)
+     ```
+
+### 6. **env**
+   - **Purpose:** Prints the environment variables for the current session.
+   - **Usage:**
+     ```bash
+     env
+     ```
+   - **Output Example:** Lists all environment variables and their values.
+     ```
+     PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+     HOME=/home/johndoe
+     SHELL=/bin/bash
+     ```
+
+### 7. **ps**
+   - **Purpose:** Lists currently running processes for the user or the entire system.
+   - **Usage:**
+     - **To list processes for the current user:**
+       ```bash
+       ps
+       ```
+     - **To show all processes:**
+       ```bash
+       ps aux
+       ```
+   - **Output Example:**
+     ```
+     PID   USER     TIME   COMMAND
+     1223  johndoe  0:00   bash
+     1356  johndoe  0:01   python3
+     ```
+
+### 8. **w**
+   - **Purpose:** Displays information about currently logged-in users and what each user is doing.
+   - **Usage:**
+     ```bash
+     w
+     ```
+   - **Output Example:** Shows who is logged in, their idle time, and their current command.
+     ```
+     USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+     johndoe  pts/0    192.168.1.10     09:05    2:00   0.10s  0.10s sshd
+     ```
+
+### 9. **finger**
+   - **Purpose:** Provides information about a user, such as full name, login time, and terminal.
+   - **Usage:**
+     ```bash
+     finger [username]
+     ```
+   - **Output Example:**
+     ```
+     Login: johndoe                     Name: John Doe
+     Directory: /home/johndoe            Shell: /bin/bash
+     On since Fri Oct 22 12:33 (IST) on pts/0
+     ```
+
+### 10. **groups**
+   - **Purpose:** Lists all the groups a user belongs to.
+   - **Usage:** 
+     ```bash
+     groups [username]
+     ```
+   - **Output Example:** Displays groups associated with the user.
+     ```
+     johndoe : johndoe sudo admin
+     ```
+
+### 11. **netstat**
+   - **Purpose:** Displays network connections, routing tables, interface statistics, masquerade connections, and multicast memberships.
+   - **Usage:** 
+     ```bash
+     netstat -a
+     ```
+   - **Output Example:** Shows active connections and listening ports.
+     ```
+     Proto Recv-Q Send-Q Local Address           Foreign Address         State
+     tcp        0      0 0.0.0.0:ssh             0.0.0.0:*               LISTEN
+     ```
+
+### 12. **uname**
+   - **Purpose:** Displays basic information about the system’s kernel.
+   - **Usage:**
+     - **To show kernel name:**
+       ```bash
+       uname
+       ```
+     - **To show detailed information (all options):**
+       ```bash
+       uname -a
+       ```
+   - **Output Example:** Provides system information such as OS, kernel version, and architecture.
+     ```
+     Linux my-computer 5.4.0-74-generic #83-Ubuntu SMP x86_64 GNU/Linux
+     ```
+
+### 13. **df**
+   - **Purpose:** Shows disk space usage for file systems.
+   - **Usage:**
+     ```bash
+     df -h
+     ```
+   - **Output Example:** Lists available and used disk space on mounted partitions.
+     ```
+     Filesystem      Size  Used Avail Use% Mounted on
+     /dev/sda1        50G   12G   35G  26% /
+     ```
+
+Telnet operations allow users to interact with remote systems over a network, often for testing services or troubleshooting connectivity. Here are some common operations and examples of how they can be performed with Telnet:
+
+### 1. **Connecting to a Remote Host**
+   - **Purpose:** Establishes a connection to a remote server on a specified port.
+   - **Command:**
+     ```bash
+     telnet [hostname or IP address] [port]
+     ```
+   - **Example:** Connect to a web server on port 80:
+     ```bash
+     telnet example.com 80
+     ```
+
+### 2. **Checking Open Ports**
+   - **Purpose:** Verifies if a specific port on a remote server is open and accepting connections.
+   - **Command:** Use Telnet to attempt a connection on a port (e.g., `telnet [IP] [port]`).
+   - **Example:** Check if port 25 (SMTP) is open on a mail server:
+     ```bash
+     telnet mail.example.com 25
+     ```
+   - **Expected Result:** If the port is open, you’ll see a response from the server. If not, the connection will fail or time out.
+
+### 3. **Sending HTTP Requests**
+   - **Purpose:** Interact directly with a web server by sending HTTP commands, which can help troubleshoot web services.
+   - **Steps:**
+     1. Connect to the web server’s IP or domain on port 80.
+     2. Send an HTTP GET request and specify the host.
+   - **Example:**
+     ```bash
+     telnet example.com 80
+     GET / HTTP/1.1
+     Host: example.com
+     ```
+   - **Expected Result:** The server should respond with the HTML content of the requested page or an error message.
+
+### 4. **Testing SMTP (Mail Server) Operations**
+   - **Purpose:** Test email functionality by connecting to an SMTP server and sending commands.
+   - **Steps:**
+     1. Connect to the SMTP server on port 25 (or 587).
+     2. Use SMTP commands to simulate sending an email.
+   - **Example:**
+     ```bash
+     telnet mail.example.com 25
+     HELO example.com
+     MAIL FROM:<your-email@example.com>
+     RCPT TO:<recipient@example.com>
+     DATA
+     ```
+   - **Expected Result:** If successful, you should receive responses from the server confirming each step.
+
+### 5. **Testing FTP Server Connection**
+   - **Purpose:** Verify FTP server availability by connecting to it on port 21.
+   - **Command:**
+     ```bash
+     telnet ftp.example.com 21
+     ```
+   - **Expected Result:** If the FTP server is running, it will respond with a welcome message.
+
+### 6. **Checking DNS Services**
+   - **Purpose:** Verify that DNS services are available by connecting to a DNS
 
   
